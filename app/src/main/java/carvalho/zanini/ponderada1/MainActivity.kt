@@ -3,6 +3,12 @@ package carvalho.zanini.ponderada1
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -13,7 +19,6 @@ import androidx.compose.ui.unit.sp
 import kotlin.random.Random
 
 import androidx.compose.ui.tooling.preview.Preview
-import carvalho.zanini.ponderada1.ui.theme.Ponderada1Theme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,9 +32,9 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun LancadorDeDadosApp() {
     var dadoSelecionado by remember { mutableStateOf("D6") }
-    var resultado by remember { mutableStateOf("Clique no botão para lançar o dado") }
+    var resultado by remember { mutableStateOf<Int?>(null) }
 
-    val dados = listOf("D6",)
+    val dados = listOf("D6", "D10", "D20", "D100")
 
     Column(
         modifier = Modifier
@@ -53,7 +58,10 @@ fun LancadorDeDadosApp() {
             ) {
                 RadioButton(
                     selected = dadoSelecionado == dado,
-                    onClick = { dadoSelecionado = dado }
+                    onClick = {
+                        dadoSelecionado = dado
+                        resultado = null
+                    }
                 )
                 Text(text = dado)
             }
@@ -64,11 +72,15 @@ fun LancadorDeDadosApp() {
         Button(
             onClick = {
                 val valorSorteado = when (dadoSelecionado) {
-                    "D6" -> Random.nextInt(6)
+                    "D6" -> Random.nextInt(1, 7)
+                    "D10" -> Random.nextInt(1, 11)
+                    "D20" -> Random.nextInt(1, 21)
+                    "D100" -> Random.nextInt(1, 101)
                     else -> 0
                 }
 
-                resultado = "Resultado do $dadoSelecionado: $valorSorteado"
+
+                resultado = valorSorteado
             },
             modifier = Modifier.fillMaxWidth()
         ) {
@@ -77,9 +89,21 @@ fun LancadorDeDadosApp() {
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        Text(
-            text = resultado,
-            fontSize = 20.sp
-        )
+        AnimatedContent(
+            targetState = resultado,
+            transitionSpec = {
+                (scaleIn(initialScale = 0.55f) + fadeIn()) togetherWith
+                        (scaleOut(targetScale = 0.55f) + fadeOut())
+            },
+            label = "dice_result"
+        ) { state ->
+            if (state != null) {
+                Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                    DiceFace(diceType = dadoSelecionado, result = state)
+                }
+            } else {
+                Text(text = "Clique no botão para lançar o dado", fontSize = 16.sp)
+            }
+        }
     }
 }
