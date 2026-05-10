@@ -6,7 +6,7 @@ Antes de começar a ponderada, eu já estava com o Android Studio instalado e re
 
 Depois disso, fui executar o app no emulador. Como eu ainda não tinha nenhum dispositivo conectado, eu precisava adicionar um dispositivo, acabei adicionando o pixel 9. Quando instalou, fiz o build, supostamente estava correto mas não consegui interagir no simulador, a tela estava congelada. Busquei fazer as mudanças necessárias do desafio e depois voltei para testar novamente e não funcionou. Ouvi o Fernando falando que o Pixel 6 era mais leve e ideal para as simulações, então resolvi instalar o novo dispositivo, demorou bastante para instalar e quando finalizou tentei novamente e deu o mesmo erro. Meu notebook ficou muito lento e travado, quase crashou. Tentei outras vezes e seguiu sem funcionar, busquei alternativas para rodar o emulador sem depender do android studio, funcionou, ficou mais leve, cheguei a utilizar alguns aplicativos mas no fim acabou ficando muito travado e não funcionou. Acredito que estava no caminho de solucionar para emular mas cheguei a conclusão que faria mais sentido fazer com o físico.
 
-![alt text](image-8.png)
+![alt text](img/image-8.png)
 
 Após muito tempo tentando resolver decidi fazer pelo meu próprio celular, queria utilizar um dos tablets mas não havia mais disponíveis. Assim, ativei o modo de desenvolvedor. Com isso, pude testar o app tranquilamente e ver que estava funcionando perfeitamente de acordo com como configurei e corrigi o problema do exercício. 
 
@@ -22,22 +22,22 @@ val valorSorteado = when (dadoSelecionado) {
 
 só ia até 6. Suspeitei que deveria apenas incrementar um, para ficar até 7, mas coloquei o mouse em hover sobre a função e pude confirmar a minha suspeita:
 
-![alt text](image.png)
+![alt text](img/image.png)
 
 A função deixa claro que só retorna um número inteiro não negativo menor do que o limite especificado, então com o limite antigo sendo 6, só retornava valores de 0 a 5.
 
 Beleza, resolvi o problema para o D6 ir até 6 mas precisava resolver a questão dele retornar 0, então busquei entender melhor como funcionava o random do kotlin. Busquei no google e a IA do google me deu uma pista
 
 
-![alt text](image-1.png)
+![alt text](img/image-1.png)
 
 Assim, tentei colocar um início de 1, indo até 7, mas quando eu coloquei o 1 apareceu um autocomplete do Android Studio mantendo com os seguintes parameters hints: 
 
-![alt text](image-2.png)
+![alt text](img/image-2.png)
 
 Com isso feito, pude seguir para adicionar o D10, D20 e D100. A minha intuição inicial era de modificar a condicional when da seguinte forma, utilizando else if:
 
-![alt text](image-3.png)
+![alt text](img/image-3.png)
 
 Mas, novamente com uma pesquisa rápida sobre a condicional when no kotlin eu pude ver um exemplo que mostrava que a forma correta era ainda mais simples do que eu imaginava. Implementei isso, testei e pude ver que estava tudo funcionando corretamente, agora resta apenas o último passo, de exibir uma representação visual das faces de acordo com cada dado.
 
@@ -69,10 +69,10 @@ Para todas as faces, era preciso seguir esse padrão com o @Composable e Box. Co
 
 Aqui estão os exemplos de como ficou a aplicação:
 
-![alt text](image-4.png)
+![alt text](img/image-4.png)
 
-![alt text](image-5.png)
+![alt text](img/image-5.png)
 
-![alt text](image-6.png)
+![alt text](img/image-6.png)
 
-![alt text](image-7.png)
+![alt text](img/image-7.png)
