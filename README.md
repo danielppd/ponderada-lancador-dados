@@ -6,6 +6,8 @@ Antes de começar a ponderada, eu já estava com o Android Studio instalado e re
 
 Depois disso, fui executar o app no emulador. Como eu ainda não tinha nenhum dispositivo conectado, eu precisava adicionar um dispositivo, acabei adicionando o pixel 9. Quando instalou, fiz o build, supostamente estava correto mas não consegui interagir no simulador, a tela estava congelada. Busquei fazer as mudanças necessárias do desafio e depois voltei para testar novamente e não funcionou. Ouvi o Fernando falando que o Pixel 6 era mais leve e ideal para as simulações, então resolvi instalar o novo dispositivo, demorou bastante para instalar e quando finalizou tentei novamente e deu o mesmo erro. Meu notebook ficou muito lento e travado, quase crashou. Tentei outras vezes e seguiu sem funcionar, busquei alternativas para rodar o emulador sem depender do android studio, funcionou, ficou mais leve, cheguei a utilizar alguns aplicativos mas no fim acabou ficando muito travado e não funcionou. Acredito que estava no caminho de solucionar para emular mas cheguei a conclusão que faria mais sentido fazer com o físico.
 
+![alt text](image-8.png)
+
 Após muito tempo tentando resolver decidi fazer pelo meu próprio celular, queria utilizar um dos tablets mas não havia mais disponíveis. Assim, ativei o modo de desenvolvedor. Com isso, pude testar o app tranquilamente e ver que estava funcionando perfeitamente de acordo com como configurei e corrigi o problema do exercício. 
 
 
